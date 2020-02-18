@@ -5,6 +5,7 @@ from pygame.sprite import Group
 from lion import Lion
 from car import Car
 
+
 def create_lions(screen, settings):
     """Make lions"""
 
@@ -14,16 +15,19 @@ def create_lions(screen, settings):
         x = random.randint(60, settings.screen_width/3)
         lion = Lion(screen, settings, (x, y))
         lions.add(lion)
-        x = random.randint(settings.screen_width/3 + 60, 
-            2*settings.screen_width/3)
+        x = random.randint(
+            settings.screen_width/3 + 60, 2*settings.screen_width/3
+        )
         lion = Lion(screen, settings, (x, y))
         lions.add(lion)
-        x = random.randint(2*settings.screen_width/3 + 60, 
-            settings.screen_width-60)
+        x = random.randint(
+            2*settings.screen_width/3 + 60, settings.screen_width-60
+        )
         lion = Lion(screen, settings, (x, y))
         lions.add(lion)
 
     return lions
+
 
 def create_cars(screen, settings):
     """Make cars"""
@@ -34,18 +38,20 @@ def create_cars(screen, settings):
         x = random.randint(100, settings.screen_width-100)
         car = Car(screen, settings, (x, y))
         cars.add(car)
-    
+
     return cars
+
 
 def print_winner(settings, screen, winner):
     # Display winner
     text_winner = pg.font.Font(settings.font_face, 2*settings.font_size)
     if winner != 0:
-        text_surf = text_winner.render(f"Player {winner} won!",
-            True, (0, 0, 0))
+        text_surf = text_winner.render(
+            f"Player {winner} won!", True, (0, 0, 0)
+        )
     else:
         text_surf = text_winner.render(f"It is a draw", True, (0, 0, 0))
-        
+
     text_rect = text_surf.get_rect()
     text_rect.centerx = settings.screen_width // 2
     text_rect.centery = settings.screen_height // 2

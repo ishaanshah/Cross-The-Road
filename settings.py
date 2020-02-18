@@ -1,5 +1,6 @@
 import pygame as pg
 
+
 class Settings():
     """A class to store all settings for Alien Invasion."""
 
@@ -8,13 +9,13 @@ class Settings():
 
         # Screen settings
         self.screen_width = 960
-        self.screen_height = 960 
+        self.screen_height = 960
 
         # Background image
         self.bg = pg.image.load("assets/background.png")
 
         # Sheep settings
-        self.sheep_speed_factor = 5 
+        self.sheep_speed_factor = 5
 
         # Car speed
         self.car_speed_factor = 10
@@ -23,4 +24,4 @@ class Settings():
 
         # Text settings
         self.font_face = "freesansbold.ttf"
-        self.font_size = 30 
+        self.font_size = 30

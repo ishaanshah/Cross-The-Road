@@ -1,4 +1,6 @@
-import sys, random, time
+import sys
+import random
+import time
 import pygame as pg
 
 from settings import Settings
@@ -9,10 +11,11 @@ from time_text import Time_Text
 import game_functions as gf
 import helper as hp
 
+
 def run_game():
     # Initialize random
     random.seed(time.time())
-    
+
     # Initialize game and create the screen
     pg.init()
     settings = Settings()
@@ -44,14 +47,14 @@ def run_game():
 
     # Start the main loop for the game
     while players[0].alive or players[1].alive:
-        # Subtract time score 
+        # Subtract time score
         if players[0].alive and players[1].alive:
             if players[0].level_complete:
                 players[0].score.update_score(int(start_time - time.time()))
                 start_time = time.time()
                 players[0].reset()
                 complete_players += 1
-                
+
             if players[1].level_complete:
                 players[1].score.update_score(int(start_time - time.time()))
                 start_time = time.time()
@@ -66,9 +69,10 @@ def run_game():
 
         players[curr_player].sheep.update()
         cars.update()
-        gf.update_screen(settings, screen, players[curr_player],
-            lions, cars, time_text)
-        
+        gf.update_screen(
+            settings, screen, players[curr_player], lions, cars, time_text
+        )
+
         if players[curr_player].alive and players[curr_player].level_complete:
             curr_player = not curr_player
 
@@ -85,7 +89,7 @@ def run_game():
                 curr_player = not curr_player
                 players[curr_player].reset()
                 start_time = time.time()
-        
+
         # Update time
         time_text.update(int(time.time()-start_time))
 
@@ -93,7 +97,7 @@ def run_game():
 
     white_bg = pg.Rect(0, 0, settings.screen_width, settings.screen_height)
     pg.draw.rect(screen, (255, 255, 255), white_bg)
-    
+
     # Get the winner
     winner = gf.declare_winner(players)
 
@@ -101,7 +105,7 @@ def run_game():
     hp.print_winner(settings, screen, winner)
 
     pg.display.update()
-    
+
     time.sleep(3)
 
 run_game()

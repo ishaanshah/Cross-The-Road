@@ -2,6 +2,7 @@ import random
 import pygame as pg
 from pygame.sprite import Sprite
 
+
 class Lion(Sprite):
     """A class to manage the lion's in the game which are fixed objects"""
 

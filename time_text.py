@@ -1,6 +1,7 @@
 import time
 import pygame as pg
 
+
 class Time_Text():
     def __init__(self, screen, settings):
         self.screen = screen
